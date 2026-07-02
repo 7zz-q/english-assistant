@@ -1,0 +1,37 @@
+# Node (migration script only)
+node_modules/
+package-lock.json
+migrate-data.js
+
+# Build output
+target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+logs/
+app.log
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+/tmp/

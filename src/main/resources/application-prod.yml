@@ -1,0 +1,20 @@
+# Production configuration overrides
+server:
+  port: ${PORT:3000}
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    com.englishassistant: INFO
+
+knife4j:
+  enable: false

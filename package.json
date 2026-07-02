@@ -1,0 +1,17 @@
+{
+  "name": "english-assistant-server",
+  "version": "1.0.0",
+  "description": "> 从 Node.js + Express + SQLite 迁移到 Spring Boot 3 + MySQL + MyBatis-Plus + Redis",
+  "main": "migrate-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "mysql2": "^3.22.5"
+  }
+}

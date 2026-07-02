@@ -1,0 +1,88 @@
+server:
+  port: ${PORT:3000}
+
+spring:
+  application:
+    name: english-assistant
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/english_assistant?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 2
+
+  sql:
+    init:
+      mode: never
+
+# MyBatis-Plus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+# JWT
+jwt:
+  secret: ${JWT_SECRET:english-assistant-jwt-secret-2024}
+  expiration: 604800000
+
+# AI (DashScope / 通义千问)
+ai:
+  dashscope:
+    api-key: ${DASHSCOPE_API_KEY:sk-placeholder}
+    base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    model: qwen-plus
+    fast-model: qwen-turbo
+
+# Knife4j
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# Logging
+logging:
+  level:
+    com.englishassistant: DEBUG
+    org.springframework.security: INFO
+    org.mybatis: DEBUG
+
+# Actuator (JVM monitoring / health checks / metrics)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,threaddump,heapdump
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
