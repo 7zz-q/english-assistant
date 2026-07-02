@@ -24,8 +24,10 @@ public class StaticResourceConfig implements WebMvcConfigurer {
 
     private static final Logger log = LoggerFactory.getLogger(StaticResourceConfig.class);
 
-    // Path to the Vue frontend build output (relative to project root)
-    private static final String DIST_PATH = "C:/Users/qiu/Desktop/english-assistant/client/dist";
+    // Path to the Vue frontend build output
+    // Priority: system property > relative to project root > absolute path
+    private static final String DIST_PATH = System.getProperty("app.frontend",
+        "C:/Users/qiu/Desktop/english-assistant-server/client/dist");
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
